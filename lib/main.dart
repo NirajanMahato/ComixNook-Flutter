@@ -1,4 +1,8 @@
+import 'package:comix_nook/Login_Screen/login_screen.dart';
+import 'package:comix_nook/routes/route_generator.dart';
+import 'package:comix_nook/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+// import 'package:comix_nook/Login_Screen';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.deepPurpleAccent)),
+      theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.red)),
       debugShowCheckedModeBanner: false,
+
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: SplashScreen.routename,
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

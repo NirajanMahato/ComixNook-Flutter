@@ -1,3 +1,5 @@
+import 'package:comix_nook/Login_Screen/login_screen.dart';
+import 'package:comix_nook/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -5,7 +7,11 @@ class RouteGenerator {
 
     final arg = settings.arguments;
     switch (settings.name) {
+      case LoginScreen.routename:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
 
+      case SplashScreen.routename:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
 
       default:
         _onPageNotFound();
