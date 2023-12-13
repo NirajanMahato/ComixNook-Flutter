@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "944281945456",
+    "project_id": "comixnook",
+    "storage_bucket": "comixnook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944281945456:android:eb5aea68b81023aedcfbb5",
+        "android_client_info": {
+          "package_name": "com.example.comix_nook.comix_nook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRGEp9itvlxCotL5PZPROboHD-1zIZiz0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

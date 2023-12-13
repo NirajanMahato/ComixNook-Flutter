@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 12,
+        elevation: 0,
         backgroundColor: Colors.deepPurpleAccent,
       ),
     );
