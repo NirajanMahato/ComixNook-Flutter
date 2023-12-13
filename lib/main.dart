@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: SplashScreen.routename,
+      initialRoute: SplashScreen.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

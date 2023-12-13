@@ -7,10 +7,10 @@ class RouteGenerator {
 
     final arg = settings.arguments;
     switch (settings.name) {
-      case LoginScreen.routename:
+      case LoginScreen.routeName:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
-      case SplashScreen.routename:
+      case SplashScreen.routeName:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
 
       default:
