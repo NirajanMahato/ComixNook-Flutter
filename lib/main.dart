@@ -1,4 +1,5 @@
 import 'package:comix_nook/Login_Screen/login_screen.dart';
+import 'package:comix_nook/formscreen/form_screen.dart';
 import 'package:comix_nook/routes/route_generator.dart';
 import 'package:comix_nook/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: FormScreen.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
