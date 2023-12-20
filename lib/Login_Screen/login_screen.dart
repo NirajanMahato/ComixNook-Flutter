@@ -65,11 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                       borderSide:
-                      const BorderSide(color: Colors.grey, width: 2)),
+                          const BorderSide(color: Colors.grey, width: 2)),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                       borderSide:
-                      const BorderSide(color: Colors.green, width: 2)),
+                          const BorderSide(color: Colors.green, width: 2)),
                 ),
               ),
             ),
@@ -80,39 +80,43 @@ class _LoginScreenState extends State<LoginScreen> {
               width: 500,
               child: ElevatedButton(onPressed: () {}, child: Text("Login")),
             ),
-            loading == true ? Align(
-                alignment: Alignment.center,
-                child: CircularProgressIndicator()) : Container(
-              width: 500,
-              child: ElevatedButton(
-                  onPressed: () async {
-                    setState(() {
-                      loading = true;
-                    });
-                    try {
-                      final user = await _auth.signInWithEmailAndPassword(
-                          email: emailController.text,
-                          password: passwordController.text);
+            loading == true
+                ? Align(
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator())
+                : Container(
+                    width: 500,
+                    child: ElevatedButton(
+                        onPressed: () async {
+                          setState(() {
+                            loading = true;
+                          });
+                          try {
+                            final user = await _auth.signInWithEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text);
 
-                      if(user.user != null){
-                        setState(() {
-                          loading = false;
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfull")));
+                            if (user.user != null) {
+                              setState(() {
+                                loading = false;
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("Login succesfull")));
 
-                        // Navigator.pushReplacementNamed(context, "destination screen");
-                      }
-                    } on Exception catch (e) {
-                      setState(() {
-                        loading = false;
-                      });
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+                              // Navigator.pushReplacementNamed(context, "destination screen");
+                            }
+                          } on Exception catch (e) {
+                            setState(() {
+                              loading = false;
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(e.toString())));
 
-                      // TODO
-                    }
-                  },
-                  child: Text("Register")),
-            ),
+                            // TODO
+                          }
+                        },
+                        child: Text("Register")),
+                  ),
             Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(

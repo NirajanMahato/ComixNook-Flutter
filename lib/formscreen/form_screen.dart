@@ -18,51 +18,94 @@ class _FormScreenState extends State<FormScreen> {
 
   final database = FirebaseDatabase.instance;
 
+  final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          TextFormField(
-            controller: fname,
-            decoration: InputDecoration(label: Text("First Name")),
-          ),
-          TextFormField(
-            controller: lname,
-            decoration: InputDecoration(label: Text("Last Name")),
-          ),
-          TextFormField(
-            controller: contact,
-            decoration: InputDecoration(label: Text("Contact")),
-          ),
-          TextFormField(
-            controller: address,
-            decoration: InputDecoration(label: Text("Address")),
-          ),
-          TextFormField(
-            controller: email,
-            decoration: InputDecoration(label: Text("Email")),
-          ),
-          ElevatedButton(
-              onPressed: () async {
-                var datas = {
-                  "firstName": fname.text,
-                  "lastName": lname.text,
-                  "contact": contact.text,
-                  "address": address.text,
-                  "email": email.text,
-                };
-                await database.ref().push().set(datas).then((value) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text("success")));
-                }).onError((error, stackTrace) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text(error.toString())));
-                });
+      body: Form(
+        key: _key,
+        child: Column(
+          children: [
+            TextFormField(
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) {
+                if (value == "" ) {
+                  return "Enter first name";
+                }
+                return null;
               },
-              child: Text("Submit"))
-        ],
+
+              controller: fname,
+              decoration: InputDecoration(label: Text("First Name")),
+            ),
+            TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value){
+                if(value == ""){
+                  return "Enter Last Name";
+                }
+                return null;
+              },
+              controller: lname,
+              decoration: InputDecoration(label: Text("Last Name")),
+            ),
+            TextFormField(
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
+              // validator: (value){
+              //   if(value == ""){
+              //     return "Enter Contact";
+              //   }
+              //   return null;
+              // },
+              controller: contact,
+              decoration: InputDecoration(label: Text("Contact")),
+            ),
+            TextFormField(
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
+              // validator: (value){
+              //   if(value == ""){
+              //     return "Enter address";
+              //   }
+              //   return null;
+              // },
+              controller: address,
+              decoration: InputDecoration(label: Text("Address")),
+            ),
+            TextFormField(
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value){
+                if(value == ""){
+                  return "Enter mail";
+                }
+                return null;
+              },
+              controller: email,
+              decoration: InputDecoration(label: Text("Email")),
+            ),
+            ElevatedButton(
+                onPressed: () async {
+
+                  if(_key.currentState!.validate()){
+                    var datas = {
+                      "firstName": fname.text,
+                      "lastName": lname.text,
+                      "contact": contact.text,
+                      "address": address.text,
+                      "email": email.text,
+                    };
+                    await database.ref().push().set(datas).then((value) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text("success")));
+                    }).onError((error, stackTrace) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(error.toString())));
+                    });
+                  }
+                },
+                child: Text("Submit"))
+          ],
+        ),
       ),
     );
   }
